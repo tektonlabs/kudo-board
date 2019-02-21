@@ -9,7 +9,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
   </head>
   <body class="font-sans antialiased text-black leading-tight">
-    <div id="app">
+    <div id="min-h-screen app">
+      <div class="h-24 flex items-center justify-center">
+          <h1 class="text-5xl text-blue font-sans">Kudo Board.</h1>
+      </div>
       @yield('body')
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
