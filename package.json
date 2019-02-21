@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.6"
     },
     "dependencies": {
+        "choices.js": "^6.0.1",
         "tailwindcss": "^0.7.4"
     }
 }
