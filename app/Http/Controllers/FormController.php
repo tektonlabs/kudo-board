@@ -25,6 +25,8 @@ class FormController extends Controller
 
     public function store(Request $request)
     {
+        $kudos = Kudo::all();
+
         $request->validate([
             'to' => 'required',
             'from' => 'required',
@@ -35,7 +37,7 @@ class FormController extends Controller
 
         try 
         {
-            dd($request->option);
+            // dd($request->option);
             $kudo = Kudo::create([
                 'to' => $request->to,
                 'from' => $request->from,
@@ -48,11 +50,17 @@ class FormController extends Controller
         }
         catch(Exception $e)
         {
-            return view('welcome', ['message' => 'Hubo un error: '.$e->getMessage()]);
+            return redirect()->route('kudo.index')->with([
+                'message' => 'Hubo un error: '.$e->getMessage(),
+                'kudos' => $kudos,
+            ]);
             
         }
 
-        return view('welcome', ['message' => 'exito']);
+        return redirect()->route('kudo.index')->with([
+            'message' => 'exito',
+            'kudos' => $kudos,
+        ]);
 
     }
 

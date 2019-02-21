@@ -17,6 +17,7 @@ class CreateKudosTable extends Migration
             $table->increments('id');
             $table->string('to')->nullable();
             $table->string('from')->nullable();
+            $table->datetime('date')->nullable();
             $table->text('message')->nullable();
             $table->timestamps();
         });

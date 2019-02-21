@@ -47,7 +47,7 @@
           @foreach($options as $option)
             <div class="md:w-1/2 -mx-2 mb-6">
               <label class="block text-grey-dark font-bold">
-                <input class="mr-2 leading-tight" type="radio" name="option[]"  value="{{ $option->id }}" {{ old('option') == $option->id ? 'checked' : 'false' }} />
+                <input class="mr-2 leading-tight" type="checkbox" name="option[]"  value="{{ $option->id }}" {{ old('option') == $option->id ? 'checked' : 'false' }} />
                 <span class="text-sm">{{ $option->text }}</span>
               </label>
             </div>
