@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Option;
 use App\Kudo;
 use Exception;
+use Carbon\Carbon;
 
 class FormController extends Controller
 {
 
     public function index()
     {
-        $kudos = Kudo::all();
+        $kudos = Kudo::paginate(5);
         return view('index', compact('kudos'));
     }
 
@@ -25,23 +26,20 @@ class FormController extends Controller
 
     public function store(Request $request)
     {
-        $kudos = Kudo::all();
+        $kudos = Kudo::paginate(5);
 
         $request->validate([
             'to' => 'required',
             'from' => 'required',
             'option' => 'required',
-            // 'date' => 'date|date_format:dd/mm/yyyy',
             'message' => 'required|max:240',
         ]);
 
         try 
         {
-            // dd($request->option);
             $kudo = Kudo::create([
                 'to' => $request->to,
                 'from' => $request->from,
-                'date' => $request->date,
                 'message' => $request->message,
             ]);
 
@@ -58,7 +56,7 @@ class FormController extends Controller
         }
 
         return redirect()->route('kudo.index')->with([
-            'message' => 'exito',
+            'message' => 'Thank you! The Kudo card has been sent',
             'kudos' => $kudos,
         ]);
 
