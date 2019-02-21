@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FormController@index')->name('kudo.index');
+Route::get('/kudo/create', 'FormController@create')->name('kudo.create');
+Route::post('/kudo/store', 'FormController@store')->name('kudo.store');
