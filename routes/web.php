@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', 'FormController@index')->name('kudo.index');
-Route::get('/kudo/create', 'FormController@create')->name('kudo.create');
-Route::post('/kudo/store', 'FormController@store')->name('kudo.store');
+Route::get('/', 'KudoController@index')->name('kudo.index');
+Route::get('/kudo/create', 'KudoController@create')->name('kudo.create');
+Route::post('/kudo/store', 'KudoController@store')->name('kudo.store');
