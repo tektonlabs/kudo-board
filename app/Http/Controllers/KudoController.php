@@ -43,7 +43,7 @@ class KudoController extends Controller
         $options = Option::all();
         return view('welcome', compact('options', 'activeCollaborators', 'inactiveCollaborators'));
     }
-    
+
     public function store(Request $request)
     {
         $kudos = Kudo::paginate(5);
@@ -52,10 +52,10 @@ class KudoController extends Controller
             'to' => 'required',
             'from' => 'required',
             'option' => 'required',
-            'message' => 'required|max:240',
+            'message' => 'required|max:200',
         ]);
 
-        try 
+        try
         {
             $kudo = Kudo::create([
                 'to' => $request->to,
@@ -72,11 +72,11 @@ class KudoController extends Controller
                 'message' => 'Hubo un error: '.$e->getMessage(),
                 'kudos' => $kudos,
             ]);
-            
+
         }
 
         return redirect()->route('kudo.index')->with([
-            'message' => 'Thank you! The Kudo card has been sent',
+            'message' => 'The Kudo card was submited sucesfully',
             'kudos' => $kudos,
         ]);
 

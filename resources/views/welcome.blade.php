@@ -61,6 +61,7 @@
             Mensaje
           </label>
           <textarea class="appearance-none block w-full bg-grey-lighter text-grey-darker border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-grey resize-none {{$errors->has('message')? 'border-red' : 'border-grey-lighter'}}" id="grid-message" name="message">{{ old('message') }}</textarea>
+          <p class="text-grey text-xs italic">Max. 240</p>
           @if ($errors->has('message'))
             <p class="text-red text-xs italic">{{ $errors->first('message', ':message') }}</p>
           @endif
