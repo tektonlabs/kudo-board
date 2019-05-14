@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  nginx:
+    build: ./docker/nginx/
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    networks:
+      - dockerlocal
+
+  app:
+    build: ./docker/php/
+    volumes:
+      - .:/var/www/html
+    networks:
+      - dockerlocal
+
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: kudoboard
+      MYSQL_USER: kudoboard
+      MYSQL_PASSWORD: secret
+    volumes:
+      - mysqldata:/var/lib/mysql
+    networks:
+      - dockerlocal
+
+networks:
+  dockerlocal:
+    driver: bridge
+
+volumes:
+  mysqldata:
+    driver: local
