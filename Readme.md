@@ -12,11 +12,13 @@ Then we need to copy our environment variables
 cp .env.example .env
 ```
 
-Install depdencies, generate encryption key and run migrations
+Install the dependencies, generate encryption key and run migrations
 ```sh
 docker-compose run app composer install
 docker-compose run app php artisan key:generate
 docker-compose run app php artisan migrate --seed
 ```
 
-For asset building we recomend use local install yarn
+For asset building we recommend using local yarn installation.
+
+Then, go to localhost:8080
